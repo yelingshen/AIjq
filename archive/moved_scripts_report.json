@@ -1,0 +1,282 @@
+[
+  {
+    "src": "BXDM/auto_vscode_setup.py",
+    "backup": "archive/BXDM_auto_vscode_setup.py",
+    "dest": "deployment/auto_vscode_setup.py"
+  },
+  {
+    "src": "utils/refactor_suggester.py",
+    "backup": "archive/utils_refactor_suggester.py",
+    "dest": "deployment/refactor_suggester.py"
+  },
+  {
+    "src": "utils/connectivity_tester.py",
+    "backup": "archive/utils_connectivity_tester.py",
+    "dest": "deployment/connectivity_tester.py"
+  },
+  {
+    "src": "utils/structure_visualizer.py",
+    "backup": "archive/utils_structure_visualizer.py",
+    "dest": "deployment/structure_visualizer.py"
+  },
+  {
+    "src": "utils/context_manager.py",
+    "backup": "archive/utils_context_manager.py",
+    "dest": "deployment/context_manager.py"
+  },
+  {
+    "src": "utils/__init__.py",
+    "backup": "archive/utils___init__.py",
+    "dest": "deployment/__init__.py"
+  },
+  {
+    "src": "utils/responder.py",
+    "backup": "archive/utils_responder.py",
+    "dest": "deployment/responder.py"
+  },
+  {
+    "src": "utils/system_logic_validator.py",
+    "backup": "archive/utils_system_logic_validator.py",
+    "dest": "deployment/system_logic_validator.py"
+  },
+  {
+    "src": "utils/script_analyzer.py",
+    "backup": "archive/utils_script_analyzer.py",
+    "dest": "deployment/script_analyzer.py"
+  },
+  {
+    "src": "utils/report_generator.py",
+    "backup": "archive/utils_report_generator.py",
+    "dest": "deployment/report_generator.py"
+  },
+  {
+    "src": "utils/memory_cache.py",
+    "backup": "archive/utils_memory_cache.py",
+    "dest": "deployment/memory_cache.py"
+  },
+  {
+    "src": "utils/model_loader.py",
+    "backup": "archive/utils_model_loader.py",
+    "dest": "deployment/model_loader.py"
+  },
+  {
+    "src": "cli/__init__.py",
+    "backup": "archive/cli___init__.py",
+    "dest": "deployment/__init__.py"
+  },
+  {
+    "src": "cli/cli.py",
+    "backup": "archive/cli_cli.py",
+    "dest": "deployment/cli.py"
+  },
+  {
+    "src": "ai/refactor_suggester.py",
+    "backup": "archive/ai_refactor_suggester.py",
+    "dest": "deployment/refactor_suggester.py"
+  },
+  {
+    "src": "ai/connectivity_tester.py",
+    "backup": "archive/ai_connectivity_tester.py",
+    "dest": "deployment/connectivity_tester.py"
+  },
+  {
+    "src": "ai/interactive_console.py",
+    "backup": "archive/ai_interactive_console.py",
+    "dest": "deployment/interactive_console.py"
+  },
+  {
+    "src": "ai/structure_visualizer.py",
+    "backup": "archive/ai_structure_visualizer.py",
+    "dest": "deployment/structure_visualizer.py"
+  },
+  {
+    "src": "ai/context_manager.py",
+    "backup": "archive/ai_context_manager.py",
+    "dest": "deployment/context_manager.py"
+  },
+  {
+    "src": "ai/global_compat.py",
+    "backup": "archive/ai_global_compat.py",
+    "dest": "deployment/global_compat.py"
+  },
+  {
+    "src": "ai/code_duplication_detector.py",
+    "backup": "archive/ai_code_duplication_detector.py",
+    "dest": "deployment/code_duplication_detector.py"
+  },
+  {
+    "src": "ai/start_ai_assistant.py",
+    "backup": "archive/ai_start_ai_assistant.py",
+    "dest": "deployment/start_ai_assistant.py"
+  },
+  {
+    "src": "ai/global_coordination_tester.py",
+    "backup": "archive/ai_global_coordination_tester.py",
+    "dest": "deployment/global_coordination_tester.py"
+  },
+  {
+    "src": "ai/test_memory_cache.py",
+    "backup": "archive/ai_test_memory_cache.py",
+    "dest": "deployment/test_memory_cache.py"
+  },
+  {
+    "src": "ai/responder.py",
+    "backup": "archive/ai_responder.py",
+    "dest": "deployment/responder.py"
+  },
+  {
+    "src": "ai/system_logic_validator.py",
+    "backup": "archive/ai_system_logic_validator.py",
+    "dest": "deployment/system_logic_validator.py"
+  },
+  {
+    "src": "ai/server_minimal.py",
+    "backup": "archive/ai_server_minimal.py",
+    "dest": "deployment/server_minimal.py"
+  },
+  {
+    "src": "ai/project_logic_optimizer.py",
+    "backup": "archive/ai_project_logic_optimizer.py",
+    "dest": "deployment/project_logic_optimizer.py"
+  },
+  {
+    "src": "ai/cli.py",
+    "backup": "archive/ai_cli.py",
+    "dest": "deployment/cli.py"
+  },
+  {
+    "src": "ai/script_analyzer.py",
+    "backup": "archive/ai_script_analyzer.py",
+    "dest": "deployment/script_analyzer.py"
+  },
+  {
+    "src": "ai/server.py",
+    "backup": "archive/ai_server.py",
+    "dest": "deployment/server.py"
+  },
+  {
+    "src": "ai/report_generator.py",
+    "backup": "archive/ai_report_generator.py",
+    "dest": "deployment/report_generator.py"
+  },
+  {
+    "src": "ai/functional_independence_validator.py",
+    "backup": "archive/ai_functional_independence_validator.py",
+    "dest": "deployment/functional_independence_validator.py"
+  },
+  {
+    "src": "ai/memory_cache.py",
+    "backup": "archive/ai_memory_cache.py",
+    "dest": "deployment/memory_cache.py"
+  },
+  {
+    "src": "ai/model_loader.py",
+    "backup": "archive/ai_model_loader.py",
+    "dest": "deployment/model_loader.py"
+  },
+  {
+    "src": "ai/adapters/__init__.py",
+    "backup": "archive/ai_adapters___init__.py",
+    "dest": "deployment/__init__.py"
+  },
+  {
+    "src": "ai/adapters/ollama_adapter.py",
+    "backup": "archive/ai_adapters_ollama_adapter.py",
+    "dest": "deployment/ollama_adapter.py"
+  },
+  {
+    "src": "ai/adapters/pygpt4all_adapter.py",
+    "backup": "archive/ai_adapters_pygpt4all_adapter.py",
+    "dest": "deployment/pygpt4all_adapter.py"
+  },
+  {
+    "src": "ai/scanner/complexity_scanner.py",
+    "backup": "archive/ai_scanner_complexity_scanner.py",
+    "dest": "deployment/complexity_scanner.py"
+  },
+  {
+    "src": "ai/scanner/file_scanner.py",
+    "backup": "archive/ai_scanner_file_scanner.py",
+    "dest": "deployment/file_scanner.py"
+  },
+  {
+    "src": "ai/scanner/dispatcher.py",
+    "backup": "archive/ai_scanner_dispatcher.py",
+    "dest": "deployment/dispatcher.py"
+  },
+  {
+    "src": "ai/scanner/dependency_scanner.py",
+    "backup": "archive/ai_scanner_dependency_scanner.py",
+    "dest": "deployment/dependency_scanner.py"
+  },
+  {
+    "src": "ai/scanner/security_scanner.py",
+    "backup": "archive/ai_scanner_security_scanner.py",
+    "dest": "deployment/security_scanner.py"
+  },
+  {
+    "src": "ai/scanner/test_security_scanner.py",
+    "backup": "archive/ai_scanner_test_security_scanner.py",
+    "dest": "deployment/test_security_scanner.py"
+  },
+  {
+    "src": "services/assistant.py",
+    "backup": "archive/services_assistant.py",
+    "dest": "deployment/assistant.py"
+  },
+  {
+    "src": "services/__init__.py",
+    "backup": "archive/services___init__.py",
+    "dest": "deployment/__init__.py"
+  },
+  {
+    "src": "services/server_minimal.py",
+    "backup": "archive/services_server_minimal.py",
+    "dest": "deployment/server_minimal.py"
+  },
+  {
+    "src": "services/server.py",
+    "backup": "archive/services_server.py",
+    "dest": "deployment/server.py"
+  },
+  {
+    "src": "scanners/complexity_scanner.py",
+    "backup": "archive/scanners_complexity_scanner.py",
+    "dest": "deployment/complexity_scanner.py"
+  },
+  {
+    "src": "scanners/file_scanner.py",
+    "backup": "archive/scanners_file_scanner.py",
+    "dest": "deployment/file_scanner.py"
+  },
+  {
+    "src": "scanners/dispatcher.py",
+    "backup": "archive/scanners_dispatcher.py",
+    "dest": "deployment/dispatcher.py"
+  },
+  {
+    "src": "scanners/__init__.py",
+    "backup": "archive/scanners___init__.py",
+    "dest": "deployment/__init__.py"
+  },
+  {
+    "src": "scanners/dependency_scanner.py",
+    "backup": "archive/scanners_dependency_scanner.py",
+    "dest": "deployment/dependency_scanner.py"
+  },
+  {
+    "src": "scanners/security_scanner.py",
+    "backup": "archive/scanners_security_scanner.py",
+    "dest": "deployment/security_scanner.py"
+  },
+  {
+    "src": "test/conftest.py",
+    "backup": "archive/test_conftest.py",
+    "dest": "deployment/conftest.py"
+  },
+  {
+    "src": "test/test_model_loader.py",
+    "backup": "archive/test_test_model_loader.py",
+    "dest": "deployment/test_model_loader.py"
+  }
+]

@@ -1,0 +1,6 @@
+# Optional model backends (install per your environment)
+# torch
+# onnxruntime
+# pygpt4all
+# transformers
+# diffusers

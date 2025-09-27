@@ -6,9 +6,10 @@
   "engines": {
     "vscode": "^1.84.0"
   },
-  "categories": ["Other"],
-  "activationEvents": [
+  "categories": [
+    "Other"
   ],
+  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -35,11 +36,22 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src",
-    "test": "echo No tests configured"
+    "test": "echo No tests configured",
+    "start:server": "python3 ./deployment/start_server.py",
+    "start:minimal": "python3 ./deployment/start_minimal.py",
+    "start:assistant": "python3 ./deployment/start_assistant.py",
+    "start": "npm run start:assistant",
+    "deploy": "npm run start:assistant"
   },
   "dependencies": {
+    "@azure/msal-node": "^3.8.0",
     "node-fetch": "^3.3.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmdyl7166-cpu/yeling-AI"
+  },
+  "author": "yeling-ai",
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.84.0",

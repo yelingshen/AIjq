@@ -1,0 +1,28 @@
+{
+	// See http://go.microsoft.com/fwlink/?LinkId=827846
+	// for the documentation about the extensions.json format
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"ms-vscode.extension-test-runner",
+		"vinirossa.vscode-gitandgithub-pack",
+		"eamodio.gitlens",
+		"ms-vscode.azure-repos",
+		"adam-bender.commit-message-editor",
+		"mhutchie.git-graph",
+		"donjayamanne.githistory",
+		"howardzuo.vscode-git-tags",
+		"github.codespaces",
+		"github.copilot-chat",
+		"github.vscode-pull-request-github",
+		"github.remotehub",
+		"ziyasal.vscode-open-in-github",
+		"esbenp.prettier-vscode",
+		"davidanson.vscode-markdownlint",
+		"christian-kohler.npm-intellisense",
+		"ms-ceintl.vscode-language-pack-zh-hans",
+		"ms-vscode.cpptools",
+		"ms-python.vscode-pylance",
+		"ms-vscode.cmake-tools",
+		"redhat.java"
+	]
+}

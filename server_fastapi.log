@@ -1,0 +1,8 @@
+nohup: 忽略输入
+Starting uvicorn with 1 workers on 127.0.0.1:8000
+INFO:     Started server process [31770]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2025-09-27 12:13:12,513 WARNING [ai.adapters.ollama_adapter] Ollama python client failed or timed out (llama3.1:latest), took 20.00s; falling back to CLI; err=timeout after 20.0s
+2025-09-27 12:15:49,625 ERROR [ai.adapters.ollama_adapter] Ollama CLI failed or timed out for llama3.1:latest (20.00s): timeout after 20.0s

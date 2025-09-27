@@ -1,0 +1,4 @@
+# Development & security tools
+bandit
+safety
+pytest

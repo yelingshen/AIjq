@@ -1,0 +1,53 @@
+{
+  "cli.cli": {
+    "ok": true
+  },
+  "services.server": {
+    "ok": true
+  },
+  "services.server_minimal": {
+    "ok": true
+  },
+  "services.assistant": {
+    "ok": true
+  },
+  "scanners.dispatcher": {
+    "ok": true
+  },
+  "scanners.file_scanner": {
+    "ok": true
+  },
+  "scanners.complexity_scanner": {
+    "ok": true
+  },
+  "scanners.dependency_scanner": {
+    "ok": true
+  },
+  "scanners.security_scanner": {
+    "ok": true
+  },
+  "utils.model_loader": {
+    "ok": true
+  },
+  "utils.memory_cache": {
+    "ok": true
+  },
+  "utils.responder": {
+    "ok": true
+  },
+  "utils.context_manager": {
+    "ok": true
+  },
+  "utils.report_generator": {
+    "ok": true
+  },
+  "ai.server": {
+    "ok": true
+  },
+  "ai.server_minimal": {
+    "ok": true
+  },
+  "ai.start_ai_assistant": {
+    "ok": true
+  }
+}

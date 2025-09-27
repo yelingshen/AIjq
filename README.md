@@ -1,6 +1,7 @@
-# yeling-AI README
+# yeling-AI — 夜灵 AI 本地助手
 
-This is the README for your extension "yeling-AI". After writing up a brief description, we recommend including the following sections.
+夜灵 AI 是一个基于本地 Ollama 模型的 VS Code 助手扩展，提供本地模型对话、代码补全与上下文感知提示。
+本仓库包含扩展源码、后端示例与包装/部署脚本（可在本地用 Ollama 或 CI 打包生成 VSIX）。
 
 ## Features
 

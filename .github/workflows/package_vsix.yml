@@ -1,0 +1,31 @@
+name: Build and package VSIX
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  package-vsix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: |
+          cd ${{ github.workspace }}
+          npm ci
+      - name: Build (typescript)
+        run: |
+          npm run compile
+      - name: Package VSIX
+        run: |
+          npx vsce package --out yeling-ai-extension.vsix
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: yeling-ai-extension.vsix
+          path: yeling-ai-extension.vsix

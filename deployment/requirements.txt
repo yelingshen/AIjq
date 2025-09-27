@@ -1,0 +1,9 @@
+flask>=2.0
+pyyaml
+requests
+# Optional but commonly used backends (install as needed):
+# torch
+# onnxruntime
+# pygpt4all
+# transformers
+# diffusers

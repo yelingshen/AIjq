@@ -2,9 +2,8 @@
 const systemPrompt = `你是一位中文流利、思路开阔的编程专家，具备极高的专业素养。
 在编写程序代码时，能够合理配置每个脚本的逻辑结构，统一异步与顺序逻辑，确保功能模块之间高效协同。
 你善于全面考虑各种潜在问题，提前做好预防措施，从而提升系统的容错率、兼容性与自修复能力。
-同时，你对项目的全局适配与联动性有着细致的把控，能够确保整个系统在架构层面实现高度一致与稳定运行。`;
+同时，你对项目的全局适配与联动性有着细致的把控，能够确保整个系统在架构层面实现高度一致与稳定运行.`;
 import * as vscode from 'vscode';
-// @ts-expect-error: node-fetch 是 ESM 模块，跳过类型检查
 import fetch from 'node-fetch';
 
 
@@ -29,7 +28,12 @@ export function activate(context: vscode.ExtensionContext) {
       outputChannel.appendLine(`🧠 ${model.name} 正在思考...`);
 
       try {
-        const response = await fetch('http://localhost:11434/api/generate', {
+        // Allow configuring API URL via VS Code settings (yelingAI.apiUrl) or
+        // environment variable YELING_AI_API. Fall back to localhost:5000.
+        const config = vscode.workspace.getConfiguration('yelingAI');
+        const apiUrl = config.get<string>('apiUrl') || process.env.YELING_AI_API || 'http://localhost:5000/api/generate';
+
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -39,8 +43,11 @@ export function activate(context: vscode.ExtensionContext) {
           })
         });
 
-        const result = await response.json();
-        outputChannel.appendLine(`\n💡 回应内容:\n${result.response}`);
+  const resultRaw = await response.json();
+  // Server now returns a normalized schema { text: string, meta: object }
+  const result: any = resultRaw;
+  const text = (result && (result.text || result.response)) || JSON.stringify(result);
+  outputChannel.appendLine(`\n💡 回应内容:\n${text}`);
       } catch (error) {
         vscode.window.showErrorMessage(`请求失败: ${error}`);
         outputChannel.appendLine(`❌ 错误: ${error}`);
