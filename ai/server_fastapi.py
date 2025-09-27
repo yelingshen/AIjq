@@ -36,3 +36,9 @@ async def generate(req: GenerateRequest) -> Dict[str, Any]:
         return {'text': str(out), 'meta': {}}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
+@app.get('/health')
+async def health():
+    return {'status': 'ok'}
