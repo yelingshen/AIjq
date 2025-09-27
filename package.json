@@ -1,0 +1,48 @@
+{
+  "name": "yeling-ai",
+  "displayName": "夜灵 AI 本地助手",
+  "description": "使用 Ollama 本地模型的 VS Code AI 助手",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "yeling-ai.chatWithLlama",
+        "title": "与 Llama3 聊天"
+      },
+      {
+        "command": "yeling-ai.chatWithDeepseek",
+        "title": "与 Deepseek-Coder 聊天"
+      },
+      {
+        "command": "yeling-ai.chatWithPhi4",
+        "title": "与 Phi-4 Reasoning 聊天"
+      },
+      {
+        "command": "yeling-ai.chatWithGPTOSS",
+        "title": "与 GPT-OSS 20B 聊天"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src",
+    "test": "echo No tests configured"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.84.0",
+    "typescript": "^5.2.2"
+  }
+}

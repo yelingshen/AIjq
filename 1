@@ -1,0 +1,333 @@
+简易 VS Code 扩展示例：调用本地 Ollama 修改代码
+
+1. 准备
+
+你需要：
+
+Node.js 环境（推荐 v16+）
+
+VS Code 扩展开发环境（VS Code + yo code 脚手架可选）
+
+Ollama 服务已启动，监听地址默认 http://localhost:11434
+
+2. 新建扩展项目（可选）
+
+你也可以直接用这个示例代码，放进你自己新建的 VS Code 扩展里。
+
+3. 完整代码
+package.json
+
+{
+  "name": "ollama-code-edit",
+  "displayName": "Ollama Code Edit",
+  "description": "A simple VS Code extension to call local Ollama model for code modification",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:ollama.modifySelection"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ollama.modifySelection",
+        "title": "Modify Selection with Ollama AI"
+      }
+    ]
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
+
+
+src/extension.ts
+
+import * as vscode from 'vscode';
+import fetch from 'node-fetch';
+
+const OLLAMA_API = 'http://localhost:11434';
+const MODEL_NAME = 'deepseek-coder-v2'; // 你可以改成你自己的模型名称
+
+export function activate(context: vscode.ExtensionContext) {
+    let disposable = vscode.commands.registerCommand('ollama.modifySelection', async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            vscode.window.showErrorMessage('No active editor found!');
+            return;
+        }
+
+        const selection = editor.selection;
+        if (selection.isEmpty) {
+            vscode.window.showInformationMessage('Please select some code to modify.');
+            return;
+        }
+
+        const selectedText = editor.document.getText(selection);
+
+        // 让用户输入修改说明
+        const userPrompt = await vscode.window.showInputBox({
+            prompt: '输入你希望 AI 做的修改（例如：优化代码，增加注释，修复 bug 等）',
+            placeHolder: '例如：请帮我优化这段代码，提高性能'
+        });
+
+        if (!userPrompt) {
+            vscode.window.showInformationMessage('修改说明不能为空');
+            return;
+        }
+
+        const combinedPrompt = `请根据以下说明修改代码，保持代码功能一致。\n说明：${userPrompt}\n代码：\n${selectedText}\n修改后的代码：`;
+
+        vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: "调用 Ollama AI 修改代码中...",
+            cancellable: false
+        }, async (progress) => {
+            try {
+                const response = await fetch(`${OLLAMA_API}/api/models/${MODEL_NAME}/run`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        prompt: combinedPrompt,
+                        max_tokens: 512,
+                        temperature: 0.2,
+                        stop: ["\n\n"]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`请求失败: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                if (!data.choices || data.choices.length === 0) {
+                    throw new Error('模型未返回内容');
+                }
+
+                // 取第一条返回的文本
+                const newCode = data.choices[0].text.trim();
+
+                await editor.edit(editBuilder => {
+                    editBuilder.replace(selection, newCode);
+                });
+
+                vscode.window.showInformationMessage('代码修改完成！');
+            } catch (error: any) {
+                vscode.window.showErrorMessage(`调用 Ollama 失败: ${error.message}`);
+            }
+        });
+    });
+
+    context.subscriptions.push(disposable);
+}
+
+export function deactivate() {}
+
+
+4. 使用步骤
+
+在本地创建该扩展项目，安装依赖：
+
+npm install
+
+编译 TypeScript：
+
+npx tsc
+
+
+（确保你有 tsconfig.json，或者直接用 js 写也可以）
+
+打开 VS Code，按 F5 启动扩展开发主机。
+
+打开任意代码文件，选中部分代码。
+
+按 Ctrl+Shift+P 打开命令面板，输入：
+
+Modify Selection with Ollama AI
+
+输入你希望 AI 做的修改描述（中文也没问题）。
+
+等待 AI 返回结果，选中代码会被替换。
+
+
+关于 yo code 脚手架生成的文件和保留建议
+1. 脚手架生成的主要文件和目录
+
+通常，yo code 会生成一套比较完整的模板，包括：
+
+文件/目录	作用说明	是否必须保留
+package.json	扩展的配置和依赖声明，是核心文件	必须保留
+src/extension.ts	扩展的主入口代码，注册命令和实现功能	必须保留
+tsconfig.json	TypeScript 编译配置	如果用 TypeScript，必须保留；用 JS 可删
+README.md	项目说明文档	可删，但建议保留
+.vscode/	VS Code 工作区设置（调试配置等）	建议保留
+.gitignore	Git 忽略文件	建议保留
+package-lock.json	npm 依赖锁定文件	建议保留
+out/	编译输出目录，通常放编译后的 JS 文件	不必手动修改，生成后保留
+其它文件（如 .eslintrc、tslint.json）	代码风格、校验配置文件	视情况保留或删掉
+
+
+使用 yo code 创建 VS Code 扩展的完整指南
+一、准备环境
+1. 安装 Node.js
+
+VS Code 扩展开发基于 Node.js
+
+推荐安装 Node.js v16 或更高版本（最好最新的 LTS）
+
+官网下载安装：https://nodejs.org/
+
+node -v
+npm -v
+
+2. 安装 VS Code
+
+官网下载最新版：https://code.visualstudio.com/
+
+
+npm install -g yo generator-code
+
+
+
+
+    yo 是 Yeoman 脚手架工具
+
+    generator-code 是微软官方 VS Code 扩展生成器
+
+
+二、使用 yo code 创建扩展项目
+1. 启动生成器
+
+在想创建项目的文件夹，打开终端执行：
+yo code
+
+2. 回答交互式问题（选择和配置）
+
+Yeoman 会一步步问你：
+
+提示	说明
+What type of extension do you want to create?	选择扩展类型，建议选 “New Extension (TypeScript)” 或 “New Extension (JavaScript)”
+What's the name of your extension?	输入扩展名，英文小写，带短横线更好
+What's the identifier?	扩展唯一 ID，默认同名称
+What's the description?	简单描述
+Initialize a git repository?	建议选择 Yes（方便版本管理）
+Which package manager to use?	选择 npm（默认）或 yarn
+
+3. 选择编程语言
+
+TypeScript 推荐：类型安全，微软官方示范使用的语言，适合大型扩展
+
+JavaScript 简单快速入门，代码更直接，但缺少类型检查
+
+4. 生成后的文件结构（示例）
+
+package.json — 扩展配置
+
+src/extension.ts 或 src/extension.js — 扩展主代码
+
+tsconfig.json — TypeScript 编译配置（TypeScript 项目）
+
+.vscode/launch.json — 调试配置
+
+README.md — 项目说明
+
+out/ — 编译输出（TypeScript 编译后的 JS）
+
+.gitignore — git 忽略文件
+
+三、安装扩展开发依赖
+
+如果你用 TypeScript，需要安装依赖：
+
+npm install
+
+  这会安装 typescript、@types/vscode 等必备包
+
+    在 package.json 里会有相关依赖声明
+
+四、编译和调试扩展
+1. 编译 TypeScript
+
+npm run compile
+会自动把 src/extension.ts 编译成 out/extension.js
+
+
+2. 在 VS Code 启动调试
+
+打开扩展项目根目录
+
+按 F5，打开“扩展开发主机（Extension Development Host）”
+
+在新窗口里测试扩展功能
+
+五、语言基础配置建议
+1. TypeScript
+
+tsconfig.json 里配置了编译目标，建议默认即可：
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "out",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true
+  },
+  "exclude": ["node_modules", ".vscode-test"]
+}
+
+strict 模式开启，保证类型安全
+
+2. JavaScript
+
+生成器会用普通 JS 文件，不用 tsconfig.json
+
+可选装 ESLint，推荐添加 .eslintrc.json 配置代码规范
+
+开发时可开启 VS Code 的 JavaScript IntelliSense
+
+3. 调试配置
+
+.vscode/launch.json 里有预设：
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ],
+      "preLaunchTask": "npm: compile"
+    }
+  ]
+}
+
+允许你按 F5 直接启动扩展开发主机
+
+六、额外推荐插件
+
+ESLint — 代码规范校验
+
+Prettier - Code formatter — 代码格式化
+
+GitLens — Git 版本管理辅助
+
+TSLint (已废弃，建议用 ESLint)
+
+
+七、总结流程
+步骤	说明	命令或操作
+安装 Node.js	安装 Node.js 和 npm	https://nodejs.org
+
