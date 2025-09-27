@@ -1,0 +1,10 @@
+Lint run attempted on 2025-09-27T
+
+No linter available in PATH: trunk or ruff not found. To run lint locally, install 'trunk' or 'ruff'.
+
+Suggested commands:
+
+- pip install ruff
+- trunk check
+
+No linter executed
