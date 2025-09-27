@@ -3,3 +3,21 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+
+
+# Local python virtualenvs and caches
+/.venv
+/.venv_local_for_packaging
+venv/
+
+# Node and build artifacts
+node_modules/
+dist/
+build/
+
+# Python caches
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.cache/
+tmp/
