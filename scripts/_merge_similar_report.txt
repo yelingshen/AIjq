@@ -1,0 +1,2 @@
+[0.195] SKIP (below threshold) /home/xiedaima/桌面/AI/yeling-AI/.trunk/.gitignore vs /home/xiedaima/桌面/AI/yeling-AI/.gitignore
+[0.119] SKIP (below threshold) /home/xiedaima/桌面/AI/yeling-AI/.pytest_cache/.gitignore vs /home/xiedaima/桌面/AI/yeling-AI/.gitignore

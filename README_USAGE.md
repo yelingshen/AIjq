@@ -157,6 +157,154 @@ CI（GitHub Actions）
 - 在仓库根已修复并恢复部分关键文件（如 `package.json`、`tsconfig.json`），并在本地完成扩展的构建与打包。
 
 - 部分操作（如 git push）可能因远端访问或权限问题而失败；请检查远端设置以便将本地提交同步到远端。
+
+更容易上手的快速指南（适用于全新机器）
+---------------------------------
+
+下面的步骤把安装、检查与运行的每一步都写清楚了。按顺序执行即可在一台干净的 Linux 机器上运行本项目（也有对应 Windows/Mac 的说明）。
+
+1) 主机系统需要安装的软件（最小列表）
+
+- git  —— 版本控制与拉取仓库
+- curl 或 wget —— 下载工具
+- Python 3.10+ —— 后端运行时
+- python3-venv —— 创建虚拟环境
+- python3-pip —— pip 安装包
+- Node.js 18+ 和 npm —— 构建 VS Code 扩展与前端工具
+- build-essential / gcc / make （Linux） —— 编译本地扩展或依赖时可能需要
+
+在 Debian/Ubuntu 上建议运行（以 root 或 sudo）：
+
+```bash
+sudo apt update
+sudo apt install -y git curl python3 python3-venv python3-pip nodejs npm build-essential
+```
+
+在 macOS（使用 Homebrew）：
+
+```bash
+brew install git node python
+```
+
+在 Windows：建议安装 Git for Windows，并通过官方网站安装 Node.js 与 Python。也建议启用 WSL2 并按 Linux 步骤操作。
+
+2) VS Code 需要安装的扩展（推荐）
+
+- Python（微软）—— 提供 Python 语言支持
+- Pylance —— 更好的 Python 智能感知（可与 ruff/pyright 结合）
+- ESLint —— TypeScript/JavaScript 风格检查
+- Prettier —— 代码格式化（可选）
+- GitLens —— 更好的 Git 历史和代码作者视图
+- Remote - Containers / Remote - WSL —— 如果你使用容器或 WSL
+
+安装扩展的快速方法：在 VS Code 中按 Ctrl+P，输入以下命令并回车（分别安装）：
+
+```
+ext install ms-python.python
+ext install ms-python.vscode-pylance
+ext install dbaeumer.vscode-eslint
+ext install esbenp.prettier-vscode
+ext install eamodio.gitlens
+```
+
+3) 如何检查已安装的主机依赖（简单命令）
+
+```bash
+git --version
+python3 --version
+pip3 --version
+node --version
+npm --version
+```
+
+如果命令返回版本号，说明已安装并在 PATH 中。
+
+4) 新电脑：解压并运行（一步一步）
+
+假设你把 `cleaned_project.zip` 拷贝到新电脑并解压到 `~/yeling-AI`，下面是最小可重复步骤：
+
+```bash
+# 1) 解压
+unzip cleaned_project.zip -d ~/yeling-AI
+cd ~/yeling-AI
+
+# 2) （可选）初始化 git 或检查仓库状态
+git status || true
+
+# 3) 创建并激活 Python 虚拟环境
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 4) 安装 Python 依赖（如果项目包含 requirements）
+if [ -f deployment/requirements.txt ]; then
+   pip install -r deployment/requirements.txt
+fi
+
+# 5) 安装 Node 依赖并编译扩展
+if [ -f package.json ]; then
+   npm ci
+   npm run compile
+fi
+
+# 6) 本地运行后端（开发/最小模式）
+# 根据仓库提供的启动脚本：
+python3 deployment/start_minimal.py
+
+# 7) （可选）打包 VS Code 扩展为 VSIX：
+# 推荐使用 npx 而不是全局安装：
+npx vsce package
+```
+
+说明：上面第 4 步依赖仓库中 `deployment/requirements.txt` 是否存在；第 5 步依赖 `package.json`（已恢复到仓库根）。
+
+5) 如果你只想在 VS Code 中开发
+
+- 在 VS Code 打开项目（File → Open Folder → 选择项目根）
+- 安装上面列出的扩展
+- 在 VS Code Terminal 中运行 `source .venv/bin/activate` 然后执行 `pip install -r deployment/requirements.txt`（如果需要）
+
+6) 如果出现问题：常见排查命令
+
+- 检查 Node 依赖是否正确安装：
+   ```bash
+   npm ci
+   npm run compile
+   ```
+
+- 检查 Python 依赖：
+   ```bash
+   python3 -m pip install -U pip
+   pip install -r deployment/requirements.txt
+   ```
+
+- 如果 pytest 报错与 `archive/` 有关：在运行测试时忽略 archive：
+   ```bash
+   pytest --ignore=archive
+   ```
+
+7) 关于我们做的去重与合并（简短说明）
+
+- 我已在仓库中自动检测并处理了重复或完全相同的文件：
+   - 所有被删除或移动的重复文件备份在 `archive/removed_duplicates/<timestamp>/` 中；并创建了 `duplicates_archive.zip` 作为完整备份。
+   - 我已从项目中移除重复副本并确认当前仓库在 `scripts/find_duplicates.py` 的检查下没有完整内容重复。
+
+- 如果你需要回滚某些文件，可以从 `duplicates_archive.zip` 中恢复相应文件，或直接从 `archive/removed_duplicates/<timestamp>/` 拷贝回原路径。
+
+8) 打包交付
+
+- 我已在仓库根生成两个 ZIP 文件：
+   - `cleaned_project.zip`：清理后的项目（适合分发和在新机器上解压直接使用）
+   - `duplicates_archive.zip`：包含被移动/删除的重复文件的备份（以防万一）
+
+9) 我已经把这些变更提交到本地 git（注意：远端 push 之前请先确认远端访问）。
+
+如果你希望我继续：
+
+- 把 `cleaned_project.zip` 上传到远端 release 或创建 GitHub Release 并附带 zip
+- 在 CI 中增加自动 lint/test/build 与 VSIX 打包工作流
+- 对自动合并策略做更细致的人工审查（以避免删除有差异但功能互补的脚本）
+
+下面我会把 README 的更新提交并把已经生成的 zip 和归档加入到仓库（commit），然后把 todo 状态更新。
    我已在本地构建并打包扩展，并生成若干扫描/构建报告，报告位于 `scripts/` 目录下。
 
 - 部分操作（如 git push）失败是因为远端访问问题，需要你检查远端仓库权限或 URL。
