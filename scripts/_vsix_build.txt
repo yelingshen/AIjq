@@ -1,0 +1,11 @@
+Executing prepublish script 'npm run vscode:prepublish'...
+
+> yeling-ai@0.0.1 vscode:prepublish
+> npm run compile
+
+
+> yeling-ai@0.0.1 compile
+> tsc -p ./
+
+This extension consists of 1792 files, out of which 199 are JavaScript files. For performance reasons, you should bundle your extension: https://aka.ms/vscode-bundle-extension . You should also exclude unnecessary files by adding them to your .vscodeignore: https://aka.ms/vscode-vscodeignore
+ DONE  Packaged: yeling-ai-extension.vsix (1792 files, 14.77MB)

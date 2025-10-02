@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "ms-python.vscode-pylance",
+        "davidanson.vscode-markdownlint",
+        "christian-kohler.npm-intellisense",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "matthiesen-technology.yaml-with-script",
+        "github.copilot-chat",
+        "github.vscode-github-actions",
+        "eamodio.gitlens",
+        "donjayamanne.githistory",
+        "howardzuo.vscode-git-tags",
+        "github.copilot",
+        "github.codespaces",
+        "vinirossa.vscode-gitandgithub-pack",
+        "mccarter.start-git-bash"
+    ]
+}

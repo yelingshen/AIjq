@@ -10,10 +10,7 @@ Auto-merge similar files (conservative):
 
 This is intentionally conservative to avoid breaking behavior; manual review recommended.
 """
-import os
-import sys
 import difflib
-import hashlib
 import time
 from pathlib import Path
 
@@ -33,7 +30,7 @@ SUPPORTED = {'.py', '.sh', '.js', '.service'}
 def read_all_scripts():
     if not ALL_LIST.exists():
         return []
-    lines = [l.strip() for l in ALL_LIST.read_text(encoding='utf-8').splitlines() if l.strip()]
+    lines = [line.strip() for line in ALL_LIST.read_text(encoding='utf-8').splitlines() if line.strip()]
     # filter out archive, venv, node_modules
     def ok(p):
         if p.startswith('archive/') or p.startswith('.venv') or p.startswith('venv/') or p.startswith('node_modules/'):
@@ -90,7 +87,8 @@ def main():
     files = read_all_scripts()
     # only consider supported extensions
     files = [f for f in files if f.suffix in SUPPORTED]
-    n = len(files)
+    # number of candidate files (not used directly)
+    _count_files = len(files)
     pairs = []
     # compute content cache
     contents = {f: load_text(f) for f in files}
@@ -99,7 +97,7 @@ def main():
     for f in files:
         by_name.setdefault(f.name, []).append(f)
 
-    for name, group in by_name.items():
+    for _basename, group in by_name.items():
         if len(group) < 2:
             continue
         # pairwise compare within group
