@@ -304,6 +304,182 @@ npx vsce package
 - 在 CI 中增加自动 lint/test/build 与 VSIX 打包工作流
 - 对自动合并策略做更细致的人工审查（以避免删除有差异但功能互补的脚本）
 
+完整依赖、编辑器扩展与验证（确保在任何机器上都能运行）
+------------------------------------------------
+
+下面详细列出每一类依赖、如何在主机上安装和如何在 VS Code 中设置，以及如何验证这些设置已经正确生效。
+
+一. 主机系统依赖（按平台）
+
+- Linux (Debian/Ubuntu):
+
+   ```bash
+   sudo apt update
+   sudo apt install -y git curl wget unzip build-essential python3 python3-venv python3-pip nodejs npm
+   ```
+
+   期望输出检查：
+   ```bash
+   git --version       # e.g. git version 2.34.1
+   python3 --version   # e.g. Python 3.11.x
+   pip3 --version
+   node --version      # e.g. v18.x
+   npm --version
+   ```
+
+- macOS (Homebrew):
+
+   ```bash
+   brew install git node python
+   ```
+
+   期望检查命令同上。
+
+- Windows:
+
+   - 安装 Git for Windows（https://git-scm.com/download/win）
+   - 安装 Node.js（https://nodejs.org/）和 Python（https://www.python.org/）
+   - 推荐启用 WSL2 并按 Linux 步骤操作以获得一致环境。
+
+二. VS Code 扩展（按功能）
+
+- Python 开发与运行
+   - ms-python.python（主要 Python 支持：解释器选择、linting、运行）
+   - ms-python.vscode-pylance（快速的类型分析）
+   - ms-toolsai.jupyter（如果你使用 notebook）
+
+- 代码风格与静态检查
+   - ms-python.black-formatter 或 psf/black（格式化）
+   - ms-python.isort（导入排序）
+   - dbaeumer.vscode-eslint（前端 TS lint）
+   - charliermarsh.ruff（如果你安装 Ruff 的扩展）
+
+- TypeScript / VS Code 扩展构建
+   - esbenp.prettier-vscode（格式化）
+   - EditorConfig 或 .editorconfig 支持（可选）
+
+- Git 与协作工具
+   - eamodio.gitlens
+   - GitHub Pull Requests and Issues（如果使用 GitHub）
+
+在 VS Code 中安装扩展的快速命令（在命令面板或终端执行）：
+
+```
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
+code --install-extension eamodio.gitlens
+```
+
+三. VS Code 推荐设置（`settings.json` 片段）
+
+把下面内容添加到你的 VS Code `settings.json`，或放在 `.vscode/settings.json`：
+
+```json
+{
+   "python.defaultInterpreterPath": "./.venv/bin/python",
+   "python.formatting.provider": "black",
+   "editor.formatOnSave": true,
+   "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+   },
+   "eslint.enable": true,
+   "eslint.run": "onSave",
+   "typescript.tsdk": "node_modules/typescript/lib",
+   "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "archive/": true,
+      "node_modules/": true,
+      "out/": true
+   }
+}
+```
+
+四. 调试与运行配置（`.vscode/launch.json` 示例）
+
+在 `.vscode/launch.json` 中添加：
+
+```json
+{
+   "version": "0.2.0",
+   "configurations": [
+      {
+         "name": "Python: Run Minimal Server",
+         "type": "python",
+         "request": "launch",
+         "program": "${workspaceFolder}/deployment/start_minimal.py",
+         "console": "integratedTerminal",
+         "env": {"PYTHONUNBUFFERED": "1"}
+      }
+   ]
+}
+```
+
+五. 自动化（pre-commit 与 CI）
+
+- 推荐在本地启用 `pre-commit`：
+
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
+
+   在 `.pre-commit-config.yaml` 中可以启用 `ruff`, `black`, `isort`, `markdownlint` 等钩子。
+
+- CI（GitHub Actions）基本工作流示例：
+
+   - 安装 Python/Node、安装依赖、运行 lint、运行 tests、编译扩展、打包 VSIX 并上传 artifact。
+
+六. 核查步骤（确保环境与配置正确）
+
+每一项安装后请运行下面命令来验证并把输出与示例进行对比：
+
+```bash
+git --version
+python3 --version
+pip3 --version
+node --version
+npm --version
+code --version    # VS Code command line
+```
+
+在 VS Code 中：
+
+- 打开 `View → Extensions`，搜索并确认上面列出的扩展已经安装并启用。
+- 打开命令面板（Ctrl+Shift+P）并选择 `Python: Select Interpreter`，选择项目下的 `.venv`（若你已创建）。
+
+七. 最后验证（“能否在任何情况运行”）
+
+在完成上述所有安装与配置后，运行下面的快速自检脚本：
+
+```bash
+# 1) 激活虚拟环境
+source .venv/bin/activate
+
+# 2) 安装 Python 依赖（如果存在）
+if [ -f deployment/requirements.txt ]; then pip install -r deployment/requirements.txt; fi
+
+# 3) 安装 Node 依赖并编译（如果存在 package.json）
+if [ -f package.json ]; then npm ci && npm run compile; fi
+
+# 4) 启动最小服务（本地验证）
+python3 deployment/start_minimal.py &
+sleep 1
+curl -fsS http://127.0.0.1:8000/health || true
+
+# 5) 停止服务（手动 kill 或在 VS Code 中停止）
+```
+
+如果 `/health` 返回 200 或简单的 OK 文本，说明后端已经启动并工作。
+
+八. 额外说明
+
+- 如果项目中需要额外本地库或 OS 级依赖（例如数据库、系统库），请在 `deployment/requirements.txt` 或 `deployment/README` 中注明。我可以协助把这些信息列入 README。
+
+- 如果你要我把这些配置（`.vscode/settings.json`, `.vscode/launch.json`, `.pre-commit-config.yaml`, GitHub Actions workflow）一并添加到仓库，我可以继续创建并提交这些文件。
+
 下面我会把 README 的更新提交并把已经生成的 zip 和归档加入到仓库（commit），然后把 todo 状态更新。
    我已在本地构建并打包扩展，并生成若干扫描/构建报告，报告位于 `scripts/` 目录下。
 
