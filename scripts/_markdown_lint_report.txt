@@ -1,0 +1,4 @@
+markdownlint-cli2 v0.18.1 (markdownlint v0.38.0)
+Finding: README_USAGE.md
+Linting: 1 file(s)
+Summary: 3 error(s)

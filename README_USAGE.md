@@ -32,6 +32,25 @@ Yeling-AI — 项目使用与操作说明
 仓库结构概览
 ----------------
 
+
+- `ai/`：后端助手核心 Python 代码。
+- Yeling-AI — 项目使用与操作说明
+=================================
+
+本文档简要说明常用的开发、构建与部署步骤，分为开发环境、部署与常见排查。
+
+先决条件
+---------
+
+- 已安装 Python 3.10+（推荐 3.11/3.12）。
+
+- 已安装 Node.js 18+ 与 npm。
+
+- 可选：Docker、systemd（Linux）、vsce（用于本地打包，建议使用 npx）。
+
+仓库结构概览
+----------------
+
 - `ai/`：后端助手核心 Python 代码。
 
 - `deployment/`：部署脚本与 systemd 单元文件。
@@ -40,9 +59,9 @@ Yeling-AI — 项目使用与操作说明
 
 - `src/`：VS Code 扩展 TypeScript 源码。
 
-- `out/`：TypeScript 编译产物（被 .gitignore 忽略）。
+- `out/`：TypeScript 编译产物（通常被 .gitignore 忽略）。
 
-- `archive/`：自动归档的重复或已移动文件。
+- `archive/`：自动归档的重复或被移除的历史文件。
 
 快速开始（开发环境）
 ----------------------
@@ -65,7 +84,9 @@ Yeling-AI — 项目使用与操作说明
 
    npm ci
 
-   npm run compile   (会将 TypeScript 编译到 out/)
+   npm run compile
+
+   （TypeScript 会被编译到 out/）
 
 4. 打包 VSIX：
 
@@ -75,14 +96,12 @@ Yeling-AI — 项目使用与操作说明
 
 5. 运行后端（快速本地）：
 
-   运行 minimal server：
-
    python3 deployment/start_minimal.py
 
 部署（生产示例）
 ---------------
 
-1. 将代码放到服务器目录（例如 /opt/yeling-ai），创建 venv 并安装依赖：
+1. 将代码放到服务器目录（例如 /opt/yeling-ai），创建虚拟环境并安装依赖：
 
    python3 -m venv /opt/yeling-ai/venv
 
@@ -101,32 +120,43 @@ Yeling-AI — 项目使用与操作说明
 容器化（Docker）
 -----------------
 
-- 使用提供的 `Dockerfile` 和 `docker-compose.yml`（如果需要自定义端口或环境变量，请修改对应文件）。
+- 使用仓库中的 `Dockerfile` 和 `docker-compose.yml`。如需自定义端口或环境变量，修改对应文件。
 
 CI（GitHub Actions）
 --------------------
 
-- 工作流位于 `.github/workflows/`。若需要在 CI 中运行 lints/tests，请在 workflow 中确保安装 `python`, `pip`, `node`, `npm`，并运行 `pip install -r deployment/requirements.txt`、`npm ci`、`npm run compile`、`pytest` 等步骤。
+- 工作流位于 `.github/workflows/`。在 CI 中运行 lint 和测试的典型步骤：
+
+  - 安装运行时：`python`, `pip`, `node`, `npm`
+
+  - 安装 Python 依赖：`pip install -r deployment/requirements.txt`
+
+  - 安装 Node 依赖并编译：`npm ci && npm run compile`
+
+  - 运行测试：`pytest`（可在运行时忽略 `archive/`）
 
 常见问题与排查
 ----------------
 
-- 打包 VSIX 报错找不到 tsconfig.json：恢复仓库根的 `tsconfig.json`，然后运行 `npm run compile`。
+- 找不到 tsconfig.json：将仓库根的 `tsconfig.json` 恢复后运行 `npm run compile`。
 
-- pytest 报错与 `archive/` 冲突：在运行测试时忽略 `archive/` 目录（`pytest --ignore=archive`）。
+- pytest 导致导入错误：测试可能会与 `archive/` 中的历史文件冲突。可使用 `pytest --ignore=archive` 运行当前测试集合。
 
-- 远端 push 失败（Repository not found）：检查 git remote，确认远端仓库是否存在且你有写权限。
+- git push 报错 "Repository not found"：检查仓库 remote URL 与写权限，或使用正确的凭证登录。
 
 变更与清理策略
 -----------------
 
-- 我们的清理脚本会把重复或被移除的文件移动到 `archive/` 而不是直接删除，以便回滚。
+- 清理脚本会把重复或移除的文件移动到 `archive/`，以便必要时回滚。
 
-- 若需彻底从历史中移除大文件，请使用 `git-filter-repo`（这会重写历史并需要团队协作）。
+- 若需彻底从历史中移除大文件，请使用 `git-filter-repo` 或类似工具；注意这会重写历史并需要团队协调。
 
 最后说明
 ---------
 
-- 我已在仓库根执行并修复一系列问题：恢复 `package.json`、`tsconfig.json`，构建并打包了扩展（本地），并生成若干扫描/构建报告（存放在 `scripts/`）。
+- 在仓库根已修复并恢复部分关键文件（如 `package.json`、`tsconfig.json`），并在本地完成扩展的构建与打包。
+
+- 部分操作（如 git push）可能因远端访问或权限问题而失败；请检查远端设置以便将本地提交同步到远端。
+   我已在本地构建并打包扩展，并生成若干扫描/构建报告，报告位于 `scripts/` 目录下。
 
 - 部分操作（如 git push）失败是因为远端访问问题，需要你检查远端仓库权限或 URL。
