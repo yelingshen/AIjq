@@ -9,10 +9,36 @@
     </style>
   </head>
   <body>
-    <h1>夜灵 AI 配置助手</h1>
-    <p>检测本地部署环境并帮助配置到 VS Code。</p>
-    <button id="detect">检测本地 AI 环境</button>
-    <ul id="results"></ul>
+    <h1>夜灵 AI 配置向导</h1>
+    <p>按步骤检测本地部署、验证依赖并导出配置到 VS Code。</p>
+
+    <div id="wizard">
+      <div class="step" data-step="1">
+        <h2>步骤 1：检测本地 AI 环境</h2>
+        <button id="detect">检测本地 AI 环境</button>
+        <ul id="results"></ul>
+        <div><button id="to-step-2">下一步：检查依赖</button></div>
+      </div>
+
+      <div class="step" data-step="2" style="display:none">
+        <h2>步骤 2：检查依赖</h2>
+        <div id="deps-area"></div>
+        <div><button id="back-step-1">上一步</button> <button id="to-step-3">下一步：安装指导</button></div>
+      </div>
+
+      <div class="step" data-step="3" style="display:none">
+        <h2>步骤 3：安装/指导</h2>
+        <div id="install-area"></div>
+        <div><button id="back-step-2">上一步</button> <button id="to-step-4">完成</button></div>
+      </div>
+
+      <div class="step" data-step="4" style="display:none">
+        <h2>完成</h2>
+        <p>您可以将配置导出到 VS Code 或下载构建产物。</p>
+        <div><button id="back-step-3">上一步</button></div>
+      </div>
+    </div>
+
     <script src="renderer.js"></script>
   </body>
 </html>
