@@ -35,6 +35,10 @@ ipcMain.handle('get-install-instructions', async (event, depName) => {
   return installer.getInstructions(depName)
 })
 
+ipcMain.handle('get-install-command', async (event, depName, platform) => {
+  return installer.getInstallCommand(depName, platform)
+})
+
 ipcMain.handle('select-directory', async () => {
   const res = await dialog.showOpenDialog({ properties: ['openDirectory'] })
   if (res.canceled) return null

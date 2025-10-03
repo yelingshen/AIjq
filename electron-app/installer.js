@@ -53,4 +53,26 @@ function getInstructions(depName) {
   return { text: '未找到安装说明', windows: '', linux: '' }
 }
 
+function getInstallCommand(depName, platform) {
+  const lower = (depName || '').toLowerCase()
+  const plat = (platform || process.platform)
+  if (lower === 'python3' || lower === 'python') {
+    if (plat === 'win32') return 'Visit https://www.python.org/downloads/windows/ and install Python 3'
+    return 'sudo apt install -y python3'
+  }
+  if (lower === 'node') {
+    if (plat === 'win32') return 'Visit https://nodejs.org and download the Windows installer (LTS)'
+    return 'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs'
+  }
+  if (lower === 'ollama') {
+    if (plat === 'win32') return 'Visit https://ollama.com/download for Windows installer'
+    return 'curl https://ollama.com/install.sh | sh'
+  }
+  if (lower === 'docker') {
+    if (plat === 'win32') return 'Visit https://docs.docker.com/desktop/ to install Docker Desktop'
+    return 'Follow instructions: https://docs.docker.com/engine/install/ubuntu/'
+  }
+  return ''
+}
+
 module.exports = { validateDeps, getInstructions }

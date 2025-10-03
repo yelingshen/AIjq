@@ -25,6 +25,15 @@ depsBtn.addEventListener('click', async () => {
         alert(inst.text + '\nWindows: ' + inst.windows + '\nLinux: ' + inst.linux)
       })
       li.appendChild(btn)
+
+      const copyBtn = document.createElement('button')
+      copyBtn.textContent = '复制安装命令'
+      copyBtn.addEventListener('click', async () => {
+        const cmd = await window.electronAPI.getInstallCommand(d.name, navigator.platform.startsWith('Win'))
+        await navigator.clipboard.writeText(cmd)
+        alert('已复制安装命令: ' + cmd)
+      })
+      li.appendChild(copyBtn)
     }
     ul.appendChild(li)
   })
