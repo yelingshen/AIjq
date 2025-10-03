@@ -1,0 +1,11 @@
+# yeling-ai 配置文件示例
+server:
+  port: 8000
+  host: 0.0.0.0
+  debug: false
+model:
+  path: ./models/model.bin
+  type: fastapi
+logging:
+  level: info
+  file: logs/yeling-ai.log

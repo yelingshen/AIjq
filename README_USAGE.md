@@ -6,47 +6,11 @@ Yeling-AI — 项目使用与操作说明
 先决条件
 ---------
 
-- 已安装 Python 3.10+（最好 3.11/3.12）
-- 已安装 Node.js 18+ 与 npm
-- 可选：Docker、systemd（Linux）、vsce（用于本地打包：`npm i -g vsce`）
-
-仓库结构概览
-----------------
-- `ai/`：后端助手核心 Python 代码
-- `deployment/`：部署脚本与 systemd 单元文件
-- `scripts/`：维护脚本（清理、去重、合并辅助）
-Yeling-AI — 项目使用与操作说明
-=================================
-
-本文档覆盖从开发、测试、构建到部署的所有常用操作步骤，按模块（Python 后端 与 VS Code 扩展）分组。
-
-先决条件
----------
-
 - 已安装 Python 3.10+（最好 3.11/3.12）。
 
 - 已安装 Node.js 18+ 与 npm。
 
 - 可选：Docker、systemd（Linux）、vsce（用于本地打包，建议使用 npx 或全局安装：`npm i -g vsce`）。
-
-仓库结构概览
-----------------
-
-
-- `ai/`：后端助手核心 Python 代码。
-- Yeling-AI — 项目使用与操作说明
-=================================
-
-本文档简要说明常用的开发、构建与部署步骤，分为开发环境、部署与常见排查。
-
-先决条件
----------
-
-- 已安装 Python 3.10+（推荐 3.11/3.12）。
-
-- 已安装 Node.js 18+ 与 npm。
-
-- 可选：Docker、systemd（Linux）、vsce（用于本地打包，建议使用 npx）。
 
 仓库结构概览
 ----------------
@@ -68,54 +32,58 @@ Yeling-AI — 项目使用与操作说明
 
 1. 克隆仓库并进入目录：
 
+   ```bash
    git clone REPO_URL
-
    cd yeling-AI
+   ```
 
 2. Python 环境：
 
+   ```bash
    python3 -m venv .venv
-
    source .venv/bin/activate
-
    pip install -r deployment/requirements.txt
+   ```
 
 3. Node 环境（构建 VS Code 扩展）：
 
+   ```bash
    npm ci
-
    npm run compile
+   ```
 
    （TypeScript 会被编译到 out/）
 
 4. 打包 VSIX：
 
-   使用 npx 或全局 vsce：
-
+   ```bash
    npx vsce package
+   ```
 
 5. 运行后端（快速本地）：
 
+   ```bash
    python3 deployment/start_minimal.py
+   ```
 
 部署（生产示例）
 ---------------
 
 1. 将代码放到服务器目录（例如 /opt/yeling-ai），创建虚拟环境并安装依赖：
 
+   ```bash
    python3 -m venv /opt/yeling-ai/venv
-
    source /opt/yeling-ai/venv/bin/activate
-
    pip install -r deployment/requirements.txt
+   ```
 
 2. 拷贝 systemd 单元并启用：
 
+   ```bash
    sudo cp deployment/gunicorn.service /etc/systemd/system/yeling-ai.service
-
    sudo systemctl daemon-reload
-
    sudo systemctl enable --now yeling-ai.service
+   ```
 
 容器化（Docker）
 -----------------
