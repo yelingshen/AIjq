@@ -4,5 +4,35 @@
         "markdown": true,
         "scminput": true
     },
-    "github.copilot.nextEditSuggestions.enabled": true
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "editor.aiStats.enabled": true,
+    "editor.allowVariableFontsInAccessibilityMode": true,
+    "editor.autoIndentOnPaste": true,
+    "editor.experimental.asyncTokenizationVerification": true,
+    "editor.experimental.preferTreeSitter.css": true,
+    "editor.experimental.preferTreeSitter.ini": true,
+    "editor.experimental.preferTreeSitter.regex": true,
+    "editor.experimental.preferTreeSitter.typescript": true,
+    "editor.experimental.treeSitterTelemetry": true,
+    "editor.experimentalGpuAcceleration": "off",
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggest.preview": true,
+    "editor.suggest.shareSuggestSelections": false,
+    "files.autoSaveWhenNoErrors": true,
+    "files.autoSaveWorkspaceFilesOnly": true,
+    "terminal.explorerKind": "both",
+    "terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+    "chat.mcp.assisted.nuget.enabled": true,
+    "chat.mcp.autostart": "newAndOutdated",
+    "chat.mcp.discovery.enabled": {
+        "claude-desktop": true,
+        "windsurf": true,
+        "cursor-global": true,
+        "cursor-workspace": true
+    },
+    "chat.useChatSessionsForCloudButton": true,
+    "inlineChat.enableV2": true,
+    "inlineChat.finishOnType": false,
+    "inlineChat.notebookAgent": true
 }
