@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
 const detector = require('./detector')
+const installer = require('./installer')
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -24,6 +25,14 @@ app.whenReady().then(() => {
 ipcMain.handle('detect-environments', async () => {
   const envs = await detector.detect()
   return envs
+})
+
+ipcMain.handle('validate-deps', async () => {
+  return await installer.validateDeps()
+})
+
+ipcMain.handle('get-install-instructions', async (event, depName) => {
+  return installer.getInstructions(depName)
 })
 
 ipcMain.handle('select-directory', async () => {
