@@ -21,3 +21,7 @@ __pycache__/
 .mypy_cache/
 .cache/
 tmp/
+
+# Ignore built executables and electron output
+*.exe
+electron-dist/

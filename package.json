@@ -41,7 +41,9 @@
     "start:minimal": "python3 ./deployment/start_minimal.py",
     "start:assistant": "python3 ./deployment/start_assistant.py",
     "start": "npm run start:assistant",
-    "deploy": "npm run start:assistant"
+    "deploy": "npm run start:assistant",
+    "electron:dev": "electron ./electron-app/main.js",
+    "build:win": "electron-builder --win --x64 --publish never"
   },
   "dependencies": {
     "@azure/msal-node": "^3.8.0",
@@ -55,6 +57,8 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.84.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.0"
   }
 }
