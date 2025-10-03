@@ -18,8 +18,24 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Install Python deps (if present)
+        run: |
+          if (Test-Path -Path requirements.txt) { pip install -r requirements.txt }
+        shell: pwsh
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build Python EXE
+        run: pyinstaller --onefile --distpath dist-py deployment/start_assistant.py
 
       - name: Build for Windows
         run: npm run build:win
@@ -39,5 +55,12 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: dist/*.exe
+          tag: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Python EXE Asset
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: dist-py/*.exe
           tag: ${{ github.ref_name }}
           token: ${{ secrets.GITHUB_TOKEN }}
