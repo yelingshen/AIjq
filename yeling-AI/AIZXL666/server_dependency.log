@@ -1,0 +1,157 @@
+INFO:root:已自动补齐依赖: flask
+WARNING:root:缺失依赖: PyYAML, 正在自动安装...
+INFO:root:已自动安装依赖: PyYAML
+INFO:root:模型目录: /home/xiedaima/.local/share/nomic.ai/GPT4All/
+INFO:root:工作区目录: /home/xiedaima/桌面/GZQ
+ERROR:root:模型目录不存在: /home/xiedaima/.local/share/nomic.ai/GPT4All/
+INFO:root:工作区目录已找到: /home/xiedaima/桌面/GZQ
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dependency_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dispatcher, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.test_security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.file_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.complexity_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.script_analyzer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.functional_independence_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.system_logic_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.project_logic_optimizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.code_duplication_detector, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.structure_visualizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.report_generator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.connectivity_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.global_coordination_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.test_memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.interactive_console, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.responder, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.model_loader, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.refactor_suggester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.context_manager, 错误: No module named 'ai_assistant_full_package'
+INFO:root:识别到支持的文件: 1018 个
+INFO:root:已优化内容识别，支持文件类型: ['.py', '.js', '.html', '.md', '.json', '.yaml', '.yml']
+INFO:root:智能建议: 建议：项目包含多语言脚本，建议实现 Python 与 JS 的数据或接口联动。
+INFO:root:智能建议: 建议：已检测到测试脚本，建议完善异常处理和单元测试以提升容错率。
+INFO:root:智能建议: 建议：已集成安全相关模块，建议定期进行安全扫描和依赖升级。
+INFO:root:智能建议: 建议：已检测到文档文件，可自动生成 API 文档和用户手册，支持多端协作。
+INFO:root:智能建议: 建议：可集成更多 AI 模型或插件，提升智能化和自动化能力。
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:检测到大脚本修改，执行全局连通性和逻辑验证...
+INFO:utils.connectivity_tester:开始全局连通性测试...
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:已自动补齐依赖: flask
+WARNING:root:未检测到可用AI模型，请将模型文件放入 models 相关目录
+WARNING:root:缺失依赖: PyYAML, 正在自动安装...
+INFO:root:已自动安装依赖: PyYAML
+INFO:root:工作区目录: /home/xiedaima/桌面/GZQ
+INFO:root:工作区目录已找到: /home/xiedaima/桌面/GZQ
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dependency_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dispatcher, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.test_security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.file_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.complexity_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.script_analyzer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.functional_independence_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.system_logic_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.project_logic_optimizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.code_duplication_detector, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.structure_visualizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.report_generator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.connectivity_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.global_coordination_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.test_memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.interactive_console, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.responder, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.model_loader, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.refactor_suggester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.context_manager, 错误: No module named 'ai_assistant_full_package'
+INFO:root:识别到支持的文件: 1020 个
+INFO:root:已优化内容识别，支持文件类型: ['.py', '.js', '.html', '.md', '.json', '.yaml', '.yml']
+INFO:root:智能建议: 建议：项目包含多语言脚本，建议实现 Python 与 JS 的数据或接口联动。
+INFO:root:智能建议: 建议：已检测到测试脚本，建议完善异常处理和单元测试以提升容错率。
+INFO:root:智能建议: 建议：已集成安全相关模块，建议定期进行安全扫描和依赖升级。
+INFO:root:智能建议: 建议：已检测到文档文件，可自动生成 API 文档和用户手册，支持多端协作。
+INFO:root:智能建议: 建议：可集成更多 AI 模型或插件，提升智能化和自动化能力。
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:检测到大脚本修改，执行全局连通性和逻辑验证...
+INFO:utils.connectivity_tester:开始全局连通性测试...
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:已自动补齐依赖: flask
+WARNING:root:未检测到可用AI模型，请将模型文件放入 models 相关目录
+WARNING:root:缺失依赖: PyYAML, 正在自动安装...
+INFO:root:已自动安装依赖: PyYAML
+INFO:root:工作区目录: /home/xiedaima/桌面/GZQ
+INFO:root:工作区目录已找到: /home/xiedaima/桌面/GZQ
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dependency_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dispatcher, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.test_security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.file_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.complexity_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.script_analyzer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.functional_independence_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.system_logic_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.project_logic_optimizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.code_duplication_detector, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.structure_visualizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.report_generator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.connectivity_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.global_coordination_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.test_memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.interactive_console, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.responder, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.model_loader, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.refactor_suggester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.context_manager, 错误: No module named 'ai_assistant_full_package'
+INFO:root:识别到支持的文件: 1020 个
+INFO:root:已优化内容识别，支持文件类型: ['.py', '.js', '.html', '.md', '.json', '.yaml', '.yml']
+INFO:root:智能建议: 建议：项目包含多语言脚本，建议实现 Python 与 JS 的数据或接口联动。
+INFO:root:智能建议: 建议：已检测到测试脚本，建议完善异常处理和单元测试以提升容错率。
+INFO:root:智能建议: 建议：已集成安全相关模块，建议定期进行安全扫描和依赖升级。
+INFO:root:智能建议: 建议：已检测到文档文件，可自动生成 API 文档和用户手册，支持多端协作。
+INFO:root:智能建议: 建议：可集成更多 AI 模型或插件，提升智能化和自动化能力。
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:检测到大脚本修改，执行全局连通性和逻辑验证...
+INFO:utils.connectivity_tester:开始全局连通性测试...
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:已自动补齐依赖: flask
+WARNING:root:未检测到可用AI模型，请将模型文件放入 models 相关目录
+WARNING:root:缺失依赖: PyYAML, 正在自动安装...
+INFO:root:已自动安装依赖: PyYAML
+INFO:root:工作区目录: /home/xiedaima/桌面/GZQ
+INFO:root:工作区目录已找到: /home/xiedaima/桌面/GZQ
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dependency_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.dispatcher, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.test_security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.file_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.complexity_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.scanner.security_scanner, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.script_analyzer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.functional_independence_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.system_logic_validator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.project_logic_optimizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.code_duplication_detector, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.structure_visualizer, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.report_generator, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.connectivity_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.global_coordination_tester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.utils.test_memory_cache, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.interactive_console, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.responder, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.model_loader, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.refactor_suggester, 错误: No module named 'ai_assistant_full_package'
+ERROR:root:模块集成失败: ai_assistant_full_package.ai.context_manager, 错误: No module named 'ai_assistant_full_package'
+INFO:root:识别到支持的文件: 1020 个
+INFO:root:已优化内容识别，支持文件类型: ['.py', '.js', '.html', '.md', '.json', '.yaml', '.yml']
+INFO:root:智能建议: 建议：项目包含多语言脚本，建议实现 Python 与 JS 的数据或接口联动。
+INFO:root:智能建议: 建议：已检测到测试脚本，建议完善异常处理和单元测试以提升容错率。
+INFO:root:智能建议: 建议：已集成安全相关模块，建议定期进行安全扫描和依赖升级。
+INFO:root:智能建议: 建议：已检测到文档文件，可自动生成 API 文档和用户手册，支持多端协作。
+INFO:root:智能建议: 建议：可集成更多 AI 模型或插件，提升智能化和自动化能力。
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'
+INFO:root:检测到大脚本修改，执行全局连通性和逻辑验证...
+INFO:utils.connectivity_tester:开始全局连通性测试...
+ERROR:utils.script_analyzer:分析脚本失败: /home/xiedaima/桌面/GZQ/.venv/lib/python3.12/site-packages/werkzeug/debug/shared/debugger.js, 错误: 'has_main_execution'

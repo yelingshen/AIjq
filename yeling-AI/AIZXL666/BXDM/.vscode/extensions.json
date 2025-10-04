@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "formulahendry.code-runner",
+    "ms-ceintl.vscode-language-pack-zh-hans",
+    "ms-python.python",
+    "ms-vscode.gitlens",
+    "Gruntfuggly.todo-tree",
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "ms-python.vscode-pylance"
+  ]
+}

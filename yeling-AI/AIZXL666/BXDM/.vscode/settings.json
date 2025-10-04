@@ -1,0 +1,10 @@
+{
+  "python.pythonPath": "/bin/python3",
+  "ai-assistant.serverUrl": "",
+  "code-runner.executorMap": {
+    "python": "/bin/python3"
+  },
+  "locale": "zh-cn",
+  "files.autoSave": "afterDelay",
+  "extensions.ignoreRecommendations": false
+}

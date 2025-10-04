@@ -1,0 +1,14 @@
+﻿Uploading LFS objects: 100% (7/7), 209 MB | 0 B/s, done.
+git : remote: 
+所在位置 行:1 字符: 52
++ ... yeling-AI"; git -C $repo push yelingshen 6 --set-upstream 2>&1 | Out- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (remote: :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+remote: Create a pull request for '6' on GitHub by visiting:        
+remote:      https://github.com/yelingshen/AIjq/pull/new/6        
+remote: 
+branch '6' set up to track 'yelingshen/6'.
+To https://github.com/yelingshen/AIjq.git
+ * [new branch]      6 -> 6

@@ -1,0 +1,56 @@
+# AI助手全局配置（支持分组、优先级、动态更新）
+
+model:
+  default: GPT4All
+  group:
+    - name: LLM
+      priority: 1
+      models:
+        - GPT4All
+        - llama.cpp
+    - name: CV
+      priority: 2
+      models:
+        - yolov5
+        - resnet50
+    - name: 语音
+      priority: 3
+      models:
+        - whisper
+        - wav2vec
+
+plugin:
+  group:
+    - name: 安全检测
+      priority: 1
+      enabled: true
+    - name: 结构分析
+      priority: 2
+      enabled: true
+    - name: 依赖补齐
+      priority: 3
+      enabled: true
+  dynamic_update: true
+
+api:
+  group:
+    - name: 推理服务
+      priority: 1
+      route: /infer
+    - name: 健康检查
+      priority: 2
+      route: /health
+    - name: 结构导出
+      priority: 3
+      route: /structure
+  dynamic_update: true
+
+team:
+  members:
+    - name: Alice
+      role: dev
+    - name: Bob
+      role: ops
+  dynamic_update: true
+
+# 支持热加载，配置变更后自动生效

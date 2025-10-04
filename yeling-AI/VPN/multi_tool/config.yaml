@@ -1,0 +1,10 @@
+vpn:
+  email: "AAb0526@outlook.com"
+  password: "Lzb19950526@"
+  type: "X-VPN"
+  location: "United States"
+
+port_mappings:
+  - local_port: 3001
+    remote_host: "example.com"
+    remote_port: 443

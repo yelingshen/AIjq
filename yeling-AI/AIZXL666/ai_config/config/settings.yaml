@@ -1,0 +1,54 @@
+
+# settings for AI assistant
+workspace: /home/xiedaima/桌面/GZQ
+model:
+  auto_dir: /home/xiedaima/.local/share/nomic.ai/GPT4All/
+  preferred: null
+  n_threads: 8
+  n_ctx: 2048
+cache:
+  max_items: 3000
+  default_ttl: 600
+scanner:
+  parallel_workers: 6
+  heavy_ttl: 600
+
+rules:
+  security:
+    enabled: true
+    priority: high
+    triggers:
+      - on_save
+      - on_deploy
+    checks:
+      - dependency_scan
+      - code_injection
+      - permission_check
+  performance:
+    enabled: true
+    priority: medium
+    triggers:
+      - on_commit
+    checks:
+      - complexity_scan
+      - resource_usage
+  collaboration:
+    enabled: true
+    priority: medium
+    triggers:
+      - on_task_assign
+    checks:
+      - code_owner
+      - merge_conflict
+  self_heal:
+    enabled: true
+    priority: high
+    triggers:
+      - on_error
+      - on_scan
+    actions:
+      - auto_fix
+      - rollback
+      - notify
+
+# 支持动态更新，前端可通过 /rules 路由启用/禁用分组、调整优先级和触发条件

@@ -1,0 +1,10 @@
+### Ask AI Assistant (POST)
+POST http://127.0.0.1:5000/ask
+Content-Type: application/json
+
+{
+  "query": "请解释 scanner/dependency_scanner.py 的逻辑并给出改进建议"
+}
+
+### Get HTML report
+GET http://127.0.0.1:5000/report
